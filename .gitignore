@@ -1,0 +1,4 @@
+*.db
+*.sql
+money_control/
+*.txt

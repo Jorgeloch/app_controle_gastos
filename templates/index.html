@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Money control</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div>
+                <img src="../static/logo.png" alt="logo image">
+            </div>
+            <div>
+                <h1>controle financeiro</h1>
+            </div>
+            <div>
+                <button>Novo gasto</button>
+            </div>
+        </header>
+        <body>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Quem
+                        </th>
+                        <th>
+                            Descrição
+                        </th>
+                        <th>
+                            valor
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cost in costs %}
+                    <tr>
+                        <td>{{ cost.pessoa }}</td>
+                        <td>{{ cost.descricao }}</td>
+                        <td>{{ cost.valor }}</td>
+                        <td>
+                            <form action="/delete" method="post">
+                                <input name="id" type="hidden" value="{{ cost.id }}">
+                                <input type="submit" value="Deregister">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </body>
+        <footer>
+            <p>copyright</p>
+        </footer>
+    </body>
+</html>
