@@ -31,7 +31,8 @@ def query_db(query, args=(), one=False):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    costs = query_db("SELECT name, value, descrpition, card_number, flag FROM people JOIN (costs JOIN cards ON costs.card_id = cards.id) ON people.id = costs.person_id;")
+    return render_template("index.html", costs=costs)
 
 @app.route("/people", methods=["GET", "POST"])
 def people():

@@ -18,7 +18,7 @@
                 <button>Novo gasto</button>
             </div>
         </header>
-        <body>
+        <main>
             <table>
                 <thead>
                     <tr>
@@ -31,15 +31,23 @@
                         <th>
                             valor
                         </th>
+                        <th>
+                            cartão
+                        </th>
+                        <th>
+                            bandeira
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for cost in costs %}
                     <tr>
-                        <td>{{ cost.pessoa }}</td>
-                        <td>{{ cost.descricao }}</td>
-                        <td>{{ cost.valor }}</td>
+                        <td>{{ cost.name }}</td>
+                        <td>{{ cost.descrpition }}</td>
+                        <td>{{ cost.value }}</td>
+                        <td>{{ cost.card_number }}</td>
+                        <td>{{ cost.flag }}</td>
                         <td>
                             <form action="/delete" method="post">
                                 <input name="id" type="hidden" value="{{ cost.id }}">
@@ -50,7 +58,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </body>
+        </main>
         <footer>
             <p>copyright</p>
         </footer>
